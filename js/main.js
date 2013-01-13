@@ -5,7 +5,22 @@ function(dependencyLoader){
 
 	dependencyLoader(function(){
 
-		console.log('CDN libraries loaded');
-		
+		$(window).resize(function(){
+			var ww = $(window).width(),
+				wh = $(window).height(),
+				dw = $(document).width(),
+				dh = $(document).height(),
+				widthBigger = ww > wh,
+				ratio = widthBigger ? ww/wh : wh/ww;
+
+			$('.phase').css({
+				width: ww,
+				height: dh
+			});
+			$('.scaledbackground').each(function(){
+			});
+
+		}).trigger('resize');
+
 	});
 });

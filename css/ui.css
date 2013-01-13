@@ -1,0 +1,90 @@
+body {
+	overflow: hidden;
+}
+.bgphase0 {
+	background: #002d41;
+}
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+/* timeline */
+.timeline {
+	position: absolute;
+	bottom: 40px;
+	width: 100%;
+	height: 56px;
+}
+.timeline-nav {
+	background: url(../img/ui/timeline.png) top left no-repeat;
+	width: 610px;
+	height: 56px;
+	margin: 0 auto;
+	position: relative;
+}
+.timeline-phase {
+	text-indent: 5000px;
+	overflow: hidden;
+	display: block;
+	position: absolute;
+	width: 28px;
+	height: 28px;
+	top: 2px;
+}
+.timeline-phase a {
+	display: block;
+	width: 28px;
+	height: 28px;
+}
+.timeline-phase a:hover,
+.timeline-phase.active a {
+	background: url(../img/ui/timeline-active.png) center center no-repeat;
+}
+.early-flight {
+	left: 20px;
+}
+.phase1 {
+	left: 100px;
+}
+.phase2 {
+	left: 180px;
+}
+.phase3 {
+	left: 260px;
+}
+.phase4 {
+	left: 340px;
+}
+.phase5 {
+	left: 420px;
+}
+.phase6 {
+	left: 500px;
+}
+.phase7 {
+	left: 580px;
+}
+
+/* slides */
+.phases {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+.phase {
+	margin: 0 auto;
+}
+.phase0 {
+	background: url(../img/ui/bg/phase0tile.png) bottom left repeat-x;
+}
+.illustration {
+	position: absolute;
+	right: 40px;
+	bottom: 140px;
+}
+.scaledbackground{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}

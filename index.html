@@ -3,14 +3,34 @@
 
   <head>
     <meta charset="utf-8" />
-    <title>Boilerplate document</title>
+    <title>Dreamliner</title>
     <link rel="stylesheet" media="screen" href="css/normalise.css"></link>
+    <link rel="stylesheet" media="screen" href="css/ui.css"></link>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js"></script>
   </head>
 
-  <body>
-
+  <body class="bgphase0">
+    <section class="phases">
+      <div class="phase phase0">
+        <div class="phase-background">
+          <img class="scaledbackground" src="img/ui/bg/phase0.png" width="682" height="768" />
+          <img class="illustration" src="img/ui/planes/phase0.png" width="511" height="401" alt=""/>
+        </div>
+      </div>
+    </section>
+    <nav class="timeline">
+      <ul class="timeline-nav">
+        <li class="timeline-phase early-flight active"><a href="#">Flight</a></li>
+        <li class="timeline-phase phase1"><a href="#">1903</a></li>
+        <li class="timeline-phase phase2"><a href="#">1935</a></li>
+        <li class="timeline-phase phase3"><a href="#">1949</a></li>
+        <li class="timeline-phase phase4"><a href="#">1969</a></li>
+        <li class="timeline-phase phase5"><a href="#">1982</a></li>
+        <li class="timeline-phase phase6"><a href="#">1994</a></li>
+        <li class="timeline-phase phase7"><a href="#">2012</a></li>
+      </ul>
+    </nav>
     <script data-main="js/main" src="js/lib/require.js"></script>
   </body>
 
