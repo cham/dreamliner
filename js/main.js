@@ -1,26 +1,44 @@
-require(['lib/dependencyLoader'],
+require(['lib/dependencyLoader',
+		'ResizeHandler',
+		'TransitionHandler',
+		'Navigation'],
 
-function(dependencyLoader){
+function(dependencyLoader,
+		ResizeHandler,
+		TransitionHandler,
+		Navigation){
 	'use strict';
 
 	dependencyLoader(function(){
 
-		$(window).resize(function(){
-			var ww = $(window).width(),
-				wh = $(window).height(),
-				dw = $(document).width(),
-				dh = $(document).height(),
-				widthBigger = ww > wh,
-				ratio = widthBigger ? ww/wh : wh/ww;
+		$(document).ready(function(){
 
-			$('.phase').css({
-				width: ww,
-				height: dh
-			});
-			$('.scaledbackground').each(function(){
-			});
+			var baseDims = [940,768];
 
-		}).trigger('resize');
+			/* transition handler */
+			var transitioner = new TransitionHandler({
+					$phases: $('.phase'),
+					$track: $('.track')
+				}),
+				resizer = new ResizeHandler({
+					baseDims: baseDims,
+					$headerlogo: $('.headerlogo'),
+					$backgrounds: $('.scaledbackground'),
+					$phraseWrappers: $('.phase-wrapper'),
+					$phraseScaleables: $('.scaleable')
+				}),
+				navhandler = new Navigation({
+					$track: $('.track'),
+					$trackinner: $('.trackinner'),
+					$navlinks: $('.timeline-phase a')
+				});
 
+			transitioner.bind();
+			resizer.bind();
+			navhandler.bind();
+
+			resizer.trigger();
+
+		});
 	});
 });
