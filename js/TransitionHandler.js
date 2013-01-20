@@ -7,7 +7,12 @@ define(function(){
 	function TransitionHandler(opts){
 		this.$track = opts.$track;
 		this.$phases = opts.$phases;
+		this.$phraseWrappers = opts.$phraseWrappers;
+		this.baseDims = opts.baseDims;
+
 		this.scrollBoundaries = [];
+		this.scale = 1;
+		this.wrapperTopMargin = 0;
 
 		this.cachePhaseBoundaries();
 	}
@@ -29,7 +34,16 @@ define(function(){
 		});
 	};
 
+	TransitionHandler.prototype.updatePhraseBoundaries = function(newBoundaries){
+		_(this.scrollBoundaries).each(function(boundary,i){
+			boundary.start = newBoundaries[i-1] || 0;
+			boundary.rest = newBoundaries[i];
+			boundary.end = newBoundaries[i+1] || newBoundaries[i];
+		});
+	};
+
 	TransitionHandler.prototype.setBoundaryOut = function(boundary,percent){
+		var self = this;
 		boundary.$animateables.each(function(){
 			var $this = $(this),
 				endtop = parseInt($this.data('endtop'),10) || false,
@@ -42,17 +56,18 @@ define(function(){
 				restbottom = parseInt($this.data('restbottom'),10) || false,
 				cssProperties = {};
 
-			if(endright!==false){  cssProperties.right = Math.floor(restright + (endright * percent)); }
-			if(endleft!==false){   cssProperties.left = Math.floor(restleft + (endleft * percent)); }
-			if(endtop!==false){    cssProperties.top = Math.floor(resttop + (endtop * percent)); }
-			if(endbottom!==false){ cssProperties.bottom = Math.floor(restbottom + (endbottom * percent)); }
+			if(endright!==false){  cssProperties.right = Math.floor((restright + (endright * percent))*self.scale); }
+			if(endleft!==false){   cssProperties.left = Math.floor((restleft + (endleft * percent))*self.scale); }
+			if(endtop!==false){    cssProperties.top = Math.floor((resttop + (endtop * percent))*self.scale); }
+			if(endbottom!==false){ cssProperties.bottom = Math.floor((restbottom + (endbottom * percent))*self.scale); }
 
 			$this.css(cssProperties);
 		});
-
 	};
 
 	TransitionHandler.prototype.setBoundaryIn = function(boundary,percent){
+		var self = this;
+
 		boundary.$animateables.each(function(){
 			var $this = $(this),
 				starttop = parseInt($this.data('starttop'),10) || false,
@@ -65,10 +80,10 @@ define(function(){
 				restbottom = parseInt($this.data('restbottom'),10) || false,
 				cssProperties = {};
 
-			if(startright!==false){  cssProperties.right = Math.floor(restright + (startright * percent)); }
-			if(startleft!==false){   cssProperties.left = Math.floor(restleft + (startleft * percent)); }
-			if(starttop!==false){    cssProperties.top = Math.floor(resttop + (starttop * percent)); }
-			if(startbottom!==false){ cssProperties.bottom = Math.floor(restbottom + (startbottom * percent)); }
+			if(startright!==false){  cssProperties.right = Math.floor((restright + (startright * percent))*self.scale); }
+			if(startleft!==false){   cssProperties.left = Math.floor((restleft + (startleft * percent))*self.scale); }
+			if(starttop!==false){    cssProperties.top = Math.floor((resttop + (starttop * percent))*self.scale); }
+			if(startbottom!==false){ cssProperties.bottom = Math.floor((restbottom + (startbottom * percent))*self.scale); }
 
 			$this.css(cssProperties);
 		});
@@ -97,13 +112,18 @@ define(function(){
 		});
 	};
 
+	TransitionHandler.prototype.setScale = function(scale,wrapperTopMargin){
+		this.scale = scale;
+		this.wrapperTopMargin = wrapperTopMargin;
+	};
+
 	TransitionHandler.prototype.bind = function(){
 		var self = this;
 
 		this.$track.scroll(function(){
 			var $this = $(this),
-				lastLeft = window.parseInt($this.data('lastleft'),10) || 0,
-				scrollLeft = parseInt($(this).scrollLeft(),10),
+				lastLeft = parseInt($this.data('lastleft'),10) || 0,
+				scrollLeft = parseInt($this.scrollLeft(),10),
 				direction = scrollLeft > lastLeft,
 				perc;
 

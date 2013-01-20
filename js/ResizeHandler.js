@@ -10,13 +10,13 @@ define(function(){
 		this.$backgrounds = opts.$backgrounds;
 		this.$phraseWrappers = opts.$phraseWrappers;
 		this.$phraseScaleables = opts.$phraseScaleables;
-		this.$window = $(window);
-		this.$doc = $(document);
+		this.$window = opts.$window;
+		this.$doc = opts.$document;
 	}
 
 	ResizeHandler.prototype.scaleVisisbleBackgroundImages = function(toHeight){
 		// scaledbackground always matches window height
-		this.$backgrounds.filter(':visible').each(function(){
+		this.$backgrounds.each(function(){
 			var $this = $(this),
 				thisRatio = toHeight / this.naturalHeight;
 
@@ -45,14 +45,14 @@ define(function(){
 	ResizeHandler.prototype.scalePhaseTo = function(scaleFactor,topOffset){
 		var self = this;
 
-		this.$phraseWrappers.filter(':visible').css({
+		this.$phraseWrappers.css({
 			width: Math.floor(this.baseDims[0]*scaleFactor),
 			height: Math.floor(this.baseDims[1]*scaleFactor),
 			marginTop: topOffset
 		});
 
 		// scale illustration to factor of baseDim[1] over wh
-		this.$phraseScaleables.filter(':visible').each(function(){
+		this.$phraseScaleables.each(function(){
 			var $this = $(this),
 				resttop = parseInt($this.data('resttop'),10) || false,
 				restbottom = parseInt($this.data('restbottom'),10) || false,
@@ -93,7 +93,15 @@ define(function(){
 				self.scaleHeaderLogo(1);
 				self.scalePhaseTo(1,phaseTopMargin);
 			}
+
+			if(self.resizeCb){
+				self.resizeCb(Math.min(1,smallestRatio),phaseTopMargin);
+			}
 		});
+	};
+
+	ResizeHandler.prototype.onResize = function(cb){
+		this.resizeCb = cb;
 	};
 
 	ResizeHandler.prototype.trigger = function(){

@@ -7,9 +7,13 @@ define(function(){
 		this.$navlinks = opt.$navlinks;
 
 		this.currentIndex = 0;
-
-		this.panelScrollStep = Math.floor(this.$trackinner.width() / 7);
 	}
+
+	Navigation.prototype.updateNavPositions = function(boundaries){
+		this.$navlinks.each(function(i){
+			$(this).data('navpos',boundaries[i]);
+		});
+	};
 
 	Navigation.prototype.bind = function(){
 		var self = this;
@@ -31,10 +35,11 @@ define(function(){
 				return;
 			}
 
-			speed = 750 * indexDiff;
+			speed = 500 * indexDiff;
 
-			self.$track.scrollTo(self.panelScrollStep * index, speed);
+			self.$track.scrollTo($(this).data('navpos'), speed);
 			self.currentIndex = index;
+
 		});
 	};
 
