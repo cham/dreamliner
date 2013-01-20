@@ -1,6 +1,12 @@
 define(function(){
 	'use strict';
 
+	var isTouchDevice = function(){
+		var el = document.createElement('div');
+		el.setAttribute('ontouchstart', 'return;');
+		return typeof el.ontouchstart == "function";
+	}();
+
 	function Navigation(opt){
 		this.$trackinner = opt.$trackinner;
 		this.$track = opt.$track;
@@ -36,6 +42,8 @@ define(function(){
 			}
 
 			speed = 500 * indexDiff;
+
+			if(isTouchDevice){ speed = speed * 3; }
 
 			self.$track.scrollTo($(this).data('navpos'), speed);
 			self.currentIndex = index;
