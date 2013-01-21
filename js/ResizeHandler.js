@@ -14,13 +14,29 @@ define(function(){
 		this.$doc = opts.$document;
 	}
 
-	ResizeHandler.prototype.scaleVisisbleBackgroundImages = function(toHeight){
+	ResizeHandler.prototype.scaleBackgroundImages = function(toHeight,fillWidth){
 		// scaledbackground always matches window height
 		this.$backgrounds.each(function(){
 			var $this = $(this),
-				thisRatio = toHeight / this.naturalHeight;
+				thisRatio = toHeight / this.naturalHeight,
+				toWidth = Math.floor(this.naturalWidth*thisRatio),
+				totalWidth = toWidth,
+				$clone;
 
-			$this.height(toHeight).width((this.naturalWidth*thisRatio)|0);
+			$this.height(toHeight).width(toWidth);
+
+			if(!$this.hasClass('autotile')){return;}
+
+			$this.parent().find('.clonebackground').remove();
+
+			while(totalWidth<fillWidth){
+				$clone = $this.clone();
+				$clone.removeClass('scaledbackground').addClass('clonebackground');
+				$clone.css({position:'absolute',left:totalWidth});
+				$this.after($clone);
+				totalWidth+=toWidth;
+			}
+
 		});
 	};
 
@@ -75,29 +91,29 @@ define(function(){
 	ResizeHandler.prototype.bind = function(){
 		var self = this;
 
-		this.$window.resize(function(){
+		this.$window.resize(_.debounce(function(){
 			var ww = self.$window.width(),
 				wh = self.$window.height(),
 				wRatio = ww/self.baseDims[0],
 				hRatio = wh/self.baseDims[1],
-				smallestRatio = Math.min(wRatio,hRatio),
+				smallestRatio = Math.min(wRatio,hRatio,1),
 				phaseTopMargin = Math.floor((wh-(self.baseDims[1]*smallestRatio))/2); // window height minus phase height div 2
 
-			self.scaleVisisbleBackgroundImages(wh);
+			self.scaleBackgroundImages(wh,ww);
 
 			// if under min supported size then scale everything down
-			if(wRatio<1 || hRatio<1){
+			// if(wRatio<1 || hRatio<1){
 				self.scaleHeaderLogo(smallestRatio);
 				self.scalePhaseTo(smallestRatio,phaseTopMargin);
-			}else{
-				self.scaleHeaderLogo(1);
-				self.scalePhaseTo(1,phaseTopMargin);
-			}
+			// }else{
+				// self.scaleHeaderLogo(1);
+				// self.scalePhaseTo(1,phaseTopMargin);
+			// }
 
 			if(self.resizeCb){
 				self.resizeCb(Math.min(1,smallestRatio),phaseTopMargin);
 			}
-		});
+		},100));
 	};
 
 	ResizeHandler.prototype.onResize = function(cb){

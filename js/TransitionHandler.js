@@ -1,5 +1,5 @@
 /*
- * window resize handler
+ * transition handler
  */
 define(function(){
 	'use strict';
@@ -133,9 +133,9 @@ define(function(){
 					// play boundary in
 					perc = (scrollLeft - boundary.rest)/(boundary.start - boundary.rest);
 					self.setBoundaryIn(boundary,perc);
-					if(perc>0.95 && !direction){
+					if(perc>0.90 && !direction){
 						self.hideBoundary(boundary);
-					}else if(perc>0.05 && direction){
+					}else if(perc>0.1 && direction){
 						self.showBoundary(boundary);
 					}
 
@@ -147,9 +147,9 @@ define(function(){
 					perc = (scrollLeft - boundary.rest)/(boundary.end - boundary.rest);
 					self.setBoundaryOut(boundary,perc);
 
-					if(perc>0.95 && direction){
+					if(perc>0.90 && direction){
 						self.hideBoundary(boundary);
-					}else if(perc>0.05 && !direction){
+					}else if(perc>0.1 && !direction){
 						self.showBoundary(boundary);
 					}
 

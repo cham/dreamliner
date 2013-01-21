@@ -115,34 +115,34 @@ ul {
 	bottom: 0;
 }
 .phase0 {
-	background: #002d41 url(../img/ui/bg/phase0tile.png) bottom left repeat-x;
+	background: #002d41;
 }
 .phase1 {
-	background: #3d1a0e url(../img/ui/bg/phase1tile.png) bottom left repeat-x;
+	background: #3d1a0e;
 	opacity: 0;
 }
 .phase2 {
-	background: #013b2b url(../img/ui/bg/phase2tile.png) bottom left repeat-x;
+	background: #013b2b;
 	opacity: 0;
 }
 .phase3 {
-	background: #002d41 url(../img/ui/bg/phase3tile.png) bottom left repeat-x;
+	background: #002d41;
 	opacity: 0;
 }
 .phase4 {
-	background: #3d1a0e url(../img/ui/bg/phase4tile.png) bottom left repeat-x;
+	background: #3d1a0e;
 	opacity: 0;
 }
 .phase5 {
-	background: #013b2b url(../img/ui/bg/phase5tile.png) bottom left repeat-x;
+	background: #013b2b;
 	opacity: 0;
 }
 .phase6 {
-	background: #002d41 url(../img/ui/bg/phase6tile.png) bottom left repeat-x;
+	background: #002d41;
 	opacity: 0;
 }
 .phase7 {
-	background: #002d41 url(../img/ui/bg/phase7tile.png) bottom left repeat-x;
+	background: #002d41;
 	opacity: 0;
 }
 .phase-wrapper {
@@ -195,7 +195,7 @@ ul {
 	left: 124px;
 }
 /* phase 3 */
-.phase3 .scaledbackground {
+.phase3 .stewardess {
 	padding-bottom: 30px;
 }
 .cometheader {
