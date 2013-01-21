@@ -41,11 +41,11 @@ define(function(){
 				return;
 			}
 
-			speed = 500 * indexDiff;
+			speed = 2000 * indexDiff;
 
 			if(isTouchDevice){ speed = speed * 3; }
 
-			self.$track.scrollTo($(this).data('navpos'), speed);
+			self.$track.scrollTo($(this).data('navpos'), speed, {axis:'x',easing:'linear'});
 			self.currentIndex = index;
 
 		});

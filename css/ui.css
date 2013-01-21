@@ -126,38 +126,38 @@ ul {
 }
 .phase1 {
 	background: #3d1a0e;
-	opacity: 0;
-	display: none;
+	opacity: 0;/*
+	display: none;*/
 }
 .phase2 {
 	background: #013b2b;
-	opacity: 0;
-	display: none;
+	opacity: 0;/*
+	display: none;*/
 }
 .phase3 {
 	background: #002d41;
-	opacity: 0;
-	display: none;
+	opacity: 0;/*
+	display: none;*/
 }
 .phase4 {
 	background: #3d1a0e;
-	opacity: 0;
-	display: none;
+	opacity: 0;/*
+	display: none;*/
 }
 .phase5 {
 	background: #013b2b;
-	opacity: 0;
-	display: none;
+	opacity: 0;/*
+	display: none;*/
 }
 .phase6 {
 	background: #002d41;
-	opacity: 0;
-	display: none;
+	opacity: 0;/*
+	display: none;*/
 }
 .phase7 {
 	background: #002d41;
-	opacity: 0;
-	display: none;
+	opacity: 0;/*
+	display: none;*/
 }
 .phase-wrapper {
 	margin: 0 auto;

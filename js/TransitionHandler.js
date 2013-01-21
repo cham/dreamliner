@@ -106,14 +106,14 @@ define(function(){
 	TransitionHandler.prototype.hideBoundary = function(boundary){
 		if(!boundary.shown){ return false; }
 		boundary.$el.css({
-			display: 'none'
+			visibility: 'none'
 		});
 		boundary.shown = false;
 	};
 	TransitionHandler.prototype.showBoundary = function(boundary){
 		if(boundary.shown){ return false; }
 		boundary.$el.css({
-			display: 'block'
+			visibility: 'visible'
 		});
 		boundary.shown = true;
 	};
@@ -141,7 +141,7 @@ define(function(){
 					self.setBoundaryIn(boundary,perc);
 					if(perc>0.975 && !direction){
 						self.hideBoundary(boundary);
-					}else if(perc>0. && direction){
+					}else if(perc>0.5 && direction){
 						self.showBoundary(boundary);
 					}
 
@@ -155,7 +155,7 @@ define(function(){
 
 					if(perc>0.975 && direction){
 						self.hideBoundary(boundary);
-					}else if(perc>0. && !direction){
+					}else if(perc>0.5 && !direction){
 						self.showBoundary(boundary);
 					}
 
