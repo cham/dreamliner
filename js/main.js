@@ -71,7 +71,6 @@ function(dependencyLoader,
 				$el.scrollTo(Math.max(targetPos,0),100);
 			},100));
 
-			document.body.scrollTop = 100;
 		});
 	});
 });
