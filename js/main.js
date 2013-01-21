@@ -39,7 +39,8 @@ function(dependencyLoader,
 					$phraseWrappers: $('.phase-wrapper'),
 					$phraseScaleables: $('.scaleable'),
 					$window: $window,
-					$document: $document
+					$document: $document,
+					$clip: $('.hardclip')
 				}),
 				navhandler = new Navigation({
 					$track: posCalc.getEl(),

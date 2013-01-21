@@ -12,6 +12,7 @@ define(function(){
 		this.$phraseScaleables = opts.$phraseScaleables;
 		this.$window = opts.$window;
 		this.$doc = opts.$document;
+		this.$clip = opts.$clip;
 	}
 
 	ResizeHandler.prototype.scaleBackgroundImages = function(toHeight,fillWidth){
@@ -91,7 +92,7 @@ define(function(){
 	ResizeHandler.prototype.bind = function(){
 		var self = this;
 
-		this.$window.resize(_.debounce(function(){
+		this.$window.resize(function(){
 			var ww = self.$window.width(),
 				wh = self.$window.height(),
 				wRatio = ww/self.baseDims[0],
@@ -100,20 +101,15 @@ define(function(){
 				phaseTopMargin = Math.floor((wh-(self.baseDims[1]*smallestRatio))/2); // window height minus phase height div 2
 
 			self.scaleBackgroundImages(wh,ww);
+			self.scaleHeaderLogo(smallestRatio);
+			self.scalePhaseTo(smallestRatio,phaseTopMargin);
 
-			// if under min supported size then scale everything down
-			// if(wRatio<1 || hRatio<1){
-				self.scaleHeaderLogo(smallestRatio);
-				self.scalePhaseTo(smallestRatio,phaseTopMargin);
-			// }else{
-				// self.scaleHeaderLogo(1);
-				// self.scalePhaseTo(1,phaseTopMargin);
-			// }
+			self.$clip.css({width:ww,height:wh});
 
 			if(self.resizeCb){
 				self.resizeCb(Math.min(1,smallestRatio),phaseTopMargin);
 			}
-		},100));
+		});
 	};
 
 	ResizeHandler.prototype.onResize = function(cb){
