@@ -92,7 +92,7 @@ define(function(){
 	ResizeHandler.prototype.bind = function(){
 		var self = this;
 
-		this.$window.resize(function(){
+		function handleResize(){
 			var ww = self.$window.width(),
 				wh = self.$window.height(),
 				wRatio = ww/self.baseDims[0],
@@ -109,7 +109,12 @@ define(function(){
 			if(self.resizeCb){
 				self.resizeCb(Math.min(1,smallestRatio),phaseTopMargin);
 			}
-		});
+		}
+
+		this.$window.resize(handleResize);
+		if(window.onorientationchange){
+			onorientationchange = handleResize;
+		}
 	};
 
 	ResizeHandler.prototype.onResize = function(cb){
