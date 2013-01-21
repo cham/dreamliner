@@ -97,19 +97,21 @@ define(function(){
 		var self = this;
 
 		_(this.scrollBoundaries).each(function(b){
-			if(b.$el!==boundary.$el && boundary.shown){
+			if(b.$el!==boundary.$el){
 				self.hideBoundary(b);
 			}
 		});
 	};
 
 	TransitionHandler.prototype.hideBoundary = function(boundary){
+		if(!boundary.shown){ return false; }
 		boundary.$el.css({
 			display: 'none'
 		});
 		boundary.shown = false;
 	};
 	TransitionHandler.prototype.showBoundary = function(boundary){
+		if(boundary.shown){ return false; }
 		boundary.$el.css({
 			display: 'block'
 		});
@@ -137,9 +139,9 @@ define(function(){
 					// play boundary in
 					perc = (scrollLeft - boundary.rest)/(boundary.start - boundary.rest);
 					self.setBoundaryIn(boundary,perc);
-					if(perc>0.975 && !direction && boundary.shown){
+					if(perc>0.975 && !direction){
 						self.hideBoundary(boundary);
-					}else if(perc>0. && direction && !boundary.shown){
+					}else if(perc>0. && direction){
 						self.showBoundary(boundary);
 					}
 
@@ -151,9 +153,9 @@ define(function(){
 					perc = (scrollLeft - boundary.rest)/(boundary.end - boundary.rest);
 					self.setBoundaryOut(boundary,perc);
 
-					if(perc>0.975 && direction && boundary.shown){
+					if(perc>0.975 && direction){
 						self.hideBoundary(boundary);
-					}else if(perc>0. && !direction && !boundary.shown){
+					}else if(perc>0. && !direction){
 						self.showBoundary(boundary);
 					}
 
