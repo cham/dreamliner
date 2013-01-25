@@ -23,7 +23,17 @@ define(function(){
 	};
 
 	Navigation.prototype.updateIndex = function(){
-		this.currentIndex = Math.floor(this.$track.scrollLeft()/(this.$track.width()));
+		var scrollLeft = this.$track.scrollLeft(),
+			lastLeft = 0;
+
+		this.$navlinks.each(function(i){
+			if(parseInt($(this).data('navpos'),10)<(scrollLeft+100)){
+				lastLeft = i;
+			}
+		});
+
+		this.currentIndex = lastLeft;
+
 		this.$navlinks.filter('.active').removeClass('active');
 		$(this.$navlinks.get(this.currentIndex)).addClass('active');
 	};
@@ -52,7 +62,7 @@ define(function(){
 
 			if(isTouchDevice){ speed = speed * 2; }
 
-			self.$track.scrollTo($(this).data('navpos'), speed, {axis:'x',easing:'linear'});
+			self.$track.scrollTo($(this).data('navpos'), speed);//, {axis:'x',easing:'linear'});
 			self.currentIndex = index;
 
 		});
