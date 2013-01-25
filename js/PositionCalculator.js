@@ -14,7 +14,7 @@ define(function(){
 		opts.$body.append(this.$el);
 		opts.$body.append(this.$calcEl);
 
-		this.absoluteMaximum = 10000;
+		this.absoluteMaximum = opts.scrollbarWidth;
 		this.maxRight = this.absoluteMaximum;
 		this.numPhases = 7;
 

@@ -11,6 +11,13 @@ ul {
 	height: 100%;
 	overflow: hidden;
 }
+.animates {
+	position: absolute;/*
+	-webkit-transition: all 0.05s linear;
+	-moz-transition: all 0.05s linear;
+	-o-transition: all 0.05s linear;
+	transition: all 0.05s linear;*/
+}
 
 /* header */
 .headerlogo-wrapper {
@@ -77,7 +84,7 @@ ul {
 	height: 28px;
 }
 .timeline-phase a:hover,
-.timeline-phase.active a {
+.timeline-phase a.active {
 	background: url(../img/ui/timeline-active.png) center center no-repeat;
 }
 .nav-phase0 {
@@ -110,6 +117,7 @@ ul {
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	z-index: 0;
 }
 
 /* phases */
@@ -120,44 +128,35 @@ ul {
 	right: 0;
 	bottom: 0;
 	overflow: hidden;
+	opacity: 0;
 }
 .phase0 {
 	background: #002d41;
+	opacity: 1;
 }
 .phase1 {
 	background: #3d1a0e;
-	opacity: 0;/*
-	display: none;*/
 }
 .phase2 {
 	background: #013b2b;
-	opacity: 0;/*
-	display: none;*/
 }
 .phase3 {
 	background: #002d41;
-	opacity: 0;/*
-	display: none;*/
 }
 .phase4 {
 	background: #3d1a0e;
-	opacity: 0;/*
-	display: none;*/
 }
 .phase5 {
 	background: #013b2b;
-	opacity: 0;/*
-	display: none;*/
+	opacity: 0;/
 }
 .phase6 {
 	background: #002d41;
-	opacity: 0;/*
-	display: none;*/
+	opacity: 0;
 }
 .phase7 {
 	background: #002d41;
-	opacity: 0;/*
-	display: none;*/
+	opacity: 0;
 }
 .phase-wrapper {
 	margin: 0 auto;
@@ -181,118 +180,17 @@ ul {
 	top: 460px;
 	left: 80px;
 }
-/* phase 1 */
-.wrightcloud1 {
-	position: absolute;
-	left: 0;
-	top: 200px;
-}
-.wrightcloud2 {
-	position: absolute;
-	right: 0;
-	top: 60px;
-}
-.wrighttrees {
-	position: absolute;
-	right: 0;
-	bottom: 284px;
-}
-.wrightbros {
-	position: absolute;
-	right: 80px;
-	bottom: 140px;
-}
-.wrightplane {
-	position: absolute;
-	left: 32px;
-	top: 312px;
-}
-.wrightheader {
-	position: absolute;
-	top: 164px;
-	right: 115px;
-}
-/* phase 2 */
-.douglascloud1 {
-	position: absolute;
-}
-.douglascloud2 {
-	position: absolute;
-}
-.douglastrees {
-	position: absolute;
-}
-.douglasairport {
-	position: absolute;
-}
-.douglasplane {
-	position: absolute;
-	left: 112px;
-	top: 300px;
-}
-.douglasheader {
-	position: absolute;
-	top: 164px;
-	left: 124px;
-}
-/* phase 3 */
+/* phases */
 .phase3 .stewardess {
 	padding-bottom: 30px;
 }
-.cometheader {
+/* horizon */
+.horizon {
 	position: absolute;
-	top: 164px;
-	left: 328px;
-}
-.cometplane {
-	position: absolute;
-	top: 177px;
-	left: 48px;
-}
-/* phase 4 */
-.concordeplane {
-	position: absolute;
-	top: 190px;
-	left: 15px;
-}
-.concordeheader {
-	position: absolute;
-	top: 413px;
-	left: 300px;
-}
-
-/* phase 5 */
-.boeingheader {
-	position: absolute;
-	top: 413px;
-	left: 367px;
-}
-.boeingplane {
-	position: absolute;
-	top: 116px;
-	left: 91px;
-}
-
-/* phase 6 */
-.boeing2header {
-	position: absolute;
-	top: 163px;
-	left: 124px;
-}
-.boeing2plane {
-	position: absolute;
-	top: 296px;
-	left: 60px;
-}
-
-/* phase 7 */
-.dreamlinerheader {
-	position: absolute;
-	top: 163px;
-	left: 124px;
-}
-.dreamlinerplane {
-	position: absolute;
-	top: 163px;
-	left: -80px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 356px;
+	background: #b9a165;
+	z-index: 0;
 }

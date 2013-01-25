@@ -2,10 +2,11 @@ define(function(){
 	'use strict';
 
 	var isTouchDevice = function(){
-		var el = document.createElement('div');
-		el.setAttribute('ontouchstart', 'return;');
-		return typeof el.ontouchstart == "function";
-	}();
+			var el = document.createElement('div');
+			el.setAttribute('ontouchstart', 'return;');
+			return typeof el.ontouchstart == "function";
+		}(),
+		numphases = 7;
 
 	function Navigation(opt){
 		this.$trackinner = opt.$trackinner;
@@ -19,6 +20,12 @@ define(function(){
 		this.$navlinks.each(function(i){
 			$(this).data('navpos',boundaries[i]);
 		});
+	};
+
+	Navigation.prototype.updateIndex = function(){
+		this.currentIndex = Math.floor(this.$track.scrollLeft()/(this.$track.width()));
+		this.$navlinks.filter('.active').removeClass('active');
+		$(this.$navlinks.get(this.currentIndex)).addClass('active');
 	};
 
 	Navigation.prototype.bind = function(){
@@ -41,13 +48,17 @@ define(function(){
 				return;
 			}
 
-			speed = 2000 * indexDiff;
+			speed = 1500 * indexDiff;
 
-			if(isTouchDevice){ speed = speed * 3; }
+			if(isTouchDevice){ speed = speed * 2; }
 
 			self.$track.scrollTo($(this).data('navpos'), speed, {axis:'x',easing:'linear'});
 			self.currentIndex = index;
 
+		});
+
+		this.$track.scroll(function(){
+			self.updateIndex();
 		});
 	};
 

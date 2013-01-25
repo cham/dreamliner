@@ -20,7 +20,7 @@ define(function(){
 	TransitionHandler.prototype.cachePhaseBoundaries = function(){
 		var self = this;
 
-		this.$phases.each(function(){
+		this.$phases.each(function(i){
 			var $this = $(this);
 			self.scrollBoundaries.push(
 				{
@@ -29,7 +29,8 @@ define(function(){
 					end: $this.data('end'),
 					$el: $this,
 					$animateables: $this.find('.animates'),
-					shown: false
+					shown: false,
+					id: i
 				}
 			);
 		});
@@ -45,7 +46,9 @@ define(function(){
 	};
 
 	TransitionHandler.prototype.setBoundaryOut = function(boundary,percent){
-		var self = this;
+		var self = this,
+			opacity = 1 - (Math.pow(percent, 3));
+
 		boundary.$animateables.each(function(){
 			var $this = $(this),
 				endtop = parseInt($this.data('endtop'),10) || false,
@@ -65,10 +68,13 @@ define(function(){
 
 			$this.css(cssProperties);
 		});
+
+		boundary.$el.css({opacity: opacity});
 	};
 
 	TransitionHandler.prototype.setBoundaryIn = function(boundary,percent){
-		var self = this;
+		var self = this,
+			opacity = 1 - (Math.pow(percent, 3));
 
 		boundary.$animateables.each(function(){
 			var $this = $(this),
@@ -90,28 +96,28 @@ define(function(){
 			$this.css(cssProperties);
 		});
 
-		boundary.$el.css({opacity: 1-percent});
+		boundary.$el.css({opacity: opacity});
 	};
 
-	TransitionHandler.prototype.setBoundaryRest = function(boundary){
+	TransitionHandler.prototype.hideAllBoundariesExcept = function(boundary){
 		var self = this;
 
 		_(this.scrollBoundaries).each(function(b){
-			if(b.$el!==boundary.$el){
+			if(b.id !== boundary.id){
 				self.hideBoundary(b);
 			}
 		});
 	};
 
 	TransitionHandler.prototype.hideBoundary = function(boundary){
-		if(!boundary.shown){ return false; }
+		if(!boundary.shown){return;}
 		boundary.$el.css({
-			visibility: 'none'
+			visibility: 'hidden'
 		});
 		boundary.shown = false;
 	};
 	TransitionHandler.prototype.showBoundary = function(boundary){
-		if(boundary.shown){ return false; }
+		if(boundary.shown){return;}
 		boundary.$el.css({
 			visibility: 'visible'
 		});
@@ -145,8 +151,6 @@ define(function(){
 						self.showBoundary(boundary);
 					}
 
-				}else if(Math.abs(scrollLeft-boundary.rest) < 20){
-					self.setBoundaryRest(boundary);
 				}else if(scrollLeft>boundary.rest && scrollLeft<boundary.end){
 
 					// play boundary out
@@ -158,6 +162,10 @@ define(function(){
 					}else if(perc>0.5 && !direction){
 						self.showBoundary(boundary);
 					}
+
+				}else if(Math.abs(scrollLeft-boundary.rest)>10){
+
+					self.hideBoundary(boundary);
 
 				}
 			});
