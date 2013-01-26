@@ -12,11 +12,7 @@ ul {
 	overflow: hidden;
 }
 .animates {
-	position: absolute;/*
-	-webkit-transition: all 0.05s linear;
-	-moz-transition: all 0.05s linear;
-	-o-transition: all 0.05s linear;
-	transition: all 0.05s linear;*/
+	position: absolute;
 }
 
 /* header */
@@ -27,7 +23,7 @@ ul {
 }
 .headerlogo {
 	position: absolute;
-	z-index: 100;
+	z-index: 5;
 	top: 40px;
 }
 
@@ -129,10 +125,12 @@ ul {
 	bottom: 0;
 	overflow: hidden;
 	opacity: 0;
+	display: none;
 }
 .phase0 {
 	background: #002d41;
 	opacity: 1;
+	display: block;
 }
 .phase1 {
 	background: #3d1a0e;
@@ -148,15 +146,12 @@ ul {
 }
 .phase5 {
 	background: #013b2b;
-	opacity: 0;/
 }
 .phase6 {
 	background: #002d41;
-	opacity: 0;
 }
 .phase7 {
 	background: #002d41;
-	opacity: 0;
 }
 .phase-wrapper {
 	margin: 0 auto;
@@ -193,4 +188,244 @@ ul {
 	height: 356px;
 	background: #b9a165;
 	z-index: 0;
+}
+/* facts */
+.phase-facts {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.factline {
+	position: absolute;
+	display: block;
+	width: 51px;
+	height: 161px;
+	background: url(../img/ui/fact/factline.png) top center no-repeat;
+	opacity: 0.8;
+}
+.shortline {
+	height: 100px;
+}
+@media screen and (max-height: 650px){
+	.factline { height: 130px; }
+	.shortline { height: 80px; }
+}
+@media screen and (max-height: 550px){
+	.factline { height: 100px; }
+	.shortline { height: 60px; }
+}
+@media screen and (max-height: 450px){
+	.factline { height: 70px; }
+	.shortline { height: 50px; }
+}
+@media screen and (max-height: 350px){
+	.factline { height: 50px; }
+	.shortline { height: 50px; }
+}
+.facticon {
+	display: block;
+	width: 48px;
+	height: 48px;
+	background: url(../img/ui/fact/tui_pulse.gif) top center no-repeat;
+	margin-left: 1px;
+	border: 1px solid #fff;
+	border-radius: 24px;
+	cursor: pointer;
+	position: absolute;
+	bottom: 0;
+}
+.phase-facts {
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-ms-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+.hide {
+	opacity: 0;
+	margin-top: 10px;
+}
+.show {
+	opacity: 1;
+	margin-top: 0;
+}
+.facts {
+	display: none;
+}
+.facts, .factbg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.factbg {
+	background: #000;
+	opacity: 0.3;
+	z-index: 10;
+}
+.popup-fact {/*
+	display: none;*/
+	font-size: 13px;
+}
+.imagefact, .bubblefact {
+	position: absolute;
+	z-index: 20;
+	color: #fff;
+}
+.bubblefact {
+	height: 200px;
+	width: 170px;
+	padding: 50px 65px;
+	background: url(../img/ui/fact/bubble1.png) top center no-repeat;
+}
+.fact-close {
+	display: block;
+	width: 55px;
+	height: 55px;
+	position: absolute;
+	cursor: pointer;
+	right: 13px;
+	top: 19px;
+}
+.imagefact {
+	width: 170px;
+	height: 200px;
+	padding: 100px 110px 90px 590px;
+}
+.imagefact .fact-close {
+	right: 58px;
+	top: 64px;
+}
+.vertical-middle {
+	display: table-cell;
+	vertical-align: middle;
+}
+.popup-fact .vertical-middle {
+	height: 200px;
+}
+.imagefact .vertical-middle {
+	height: 180px;
+}
+#fact-dreamliner1 {
+	background: url(../img/ui/fact/images/dreamliner1.png) top left no-repeat;
+}
+#fact-dreamliner2 {
+	background: url(../img/ui/fact/images/dreamliner2.png) top left no-repeat;
+}
+#fact-dreamliner3 {
+	background: url(../img/ui/fact/images/dreamliner3.png) top left no-repeat;
+}
+@media screen and (max-width: 900px), (max-height: 500px){
+	.imagefact {
+		height: 200px;
+		width: 170px;
+		padding: 50px 65px;
+	}
+	.imagefact .fact-close {
+		right: 13px;
+		top: 19px;
+	}
+	#fact-dreamliner1.imagefact, #fact-dreamliner2.imagefact, #fact-dreamliner3.imagefact {
+		background: url(../img/ui/fact/bubble1.png) top center no-repeat;
+	}
+}
+/* fact icon overlays */
+.factmask {
+	margin-top: 12px;
+	margin-left: 12px;
+}
+.mask-hat {
+	margin-top: 18px;
+	margin-left: 15px;
+}
+.mask-bomb {
+	margin-top: 15px;
+	margin-left: 17px;
+}
+.mask-i {
+	margin-top: 14px;
+	margin-left: 19px;
+}
+.mask-person {
+	margin-top: 14px;
+	margin-left: 17px;
+}
+.mask-star {
+	margin-top: 14px;
+	margin-left: 15px;
+}
+.mask-cocktail{
+	margin-top: 14px;
+	margin-left: 16px;
+}
+.mask-crown {
+	margin-top: 14px;
+	margin-left: 12px;
+}
+.mask-warning {
+	margin-top: 11px;
+	margin-left: 12px;
+}
+.mask-england {
+	margin-top: 9px;
+	margin-left: 11px;
+}
+.mask-transcontinental {
+	margin-top: 9px;
+	margin-left: 8px;
+}
+.mask-i-red {
+	margin-top: 14px;
+	margin-left: 19px;
+}
+.mask-i-green {
+	margin-top: 14px;
+	margin-left: 19px;
+}
+.mask-symbol {
+	margin-top: 16px;
+	margin-left: 13px;
+}
+.mask-plane {
+	margin-top: 7px;
+	margin-left: 8px;
+}
+.mask-osxwindow {
+	margin-top: 14px;
+	margin-left: 14px;
+}
+.mask-notes {
+	margin-top: 15px;
+	margin-left: 15px;
+}
+.mask-tulip {
+	margin-top: 13px;
+	margin-left: 18px;
+}
+.mask-iphone {
+	margin-top: 13px;
+	margin-left: 17px;
+}
+.mask-seating {
+	margin-top: 12px;
+	margin-left: 13px;
+}
+.mask-moon {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.mask-sunrise {
+	margin-top: 15px;
+	margin-left: 10px;
+}
+.mask-honeycomb {
+	margin-top: 13px;
+	margin-left: 12px;
+}
+.mask-plane2 {
+	margin-top: 8px;
+	margin-left: 9px;
 }

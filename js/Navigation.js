@@ -62,6 +62,7 @@ define(function(){
 
 			if(isTouchDevice){ speed = speed * 2; }
 
+			self.$track.stop(true);
 			self.$track.scrollTo($(this).data('navpos'), speed);//, {axis:'x',easing:'linear'});
 			self.currentIndex = index;
 

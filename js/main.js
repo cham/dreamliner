@@ -3,14 +3,16 @@ require(['lib/dependencyLoader',
 		'TransitionHandler',
 		'Navigation',
 		'PositionCalculator',
-		'HorizonController'],
+		'HorizonController',
+		'FactManager'],
 
 function(dependencyLoader,
 		ResizeHandler,
 		TransitionHandler,
 		Navigation,
 		PositionCalculator,
-		HorizonController){
+		HorizonController,
+		FactManager){
 	'use strict';
 
 	dependencyLoader(function(){
@@ -54,16 +56,33 @@ function(dependencyLoader,
 				horizon = new HorizonController({
 					$track: posCalc.getEl(),
 					$horizons: $('.horizon')
+				}),
+				factMgr = new FactManager({
+					$track: posCalc.getEl(),
+					$facts: $('.phase-facts'),
+					$triggers: $('.factline'),
+					$popups: $('.popup-fact'),
+					$popupframe: $('.facts'),
+					$closers: $('.fact-close,.factbg'),
+					$window: $window,
 				});
 
 			resizer.onResize(function(scale,topmargin){
+				var newBoundaries;
+
+				posCalc.recalculate();
+				newBoundaries = posCalc.getBoundaries();
+
 				transitioner.setScale(scale);
 				horizon.setScale(scale);
-				posCalc.recalculate();
+				factMgr.setScale(scale);
 
-				transitioner.updatePhraseBoundaries(posCalc.getBoundaries());
-				navhandler.updateNavPositions(posCalc.getBoundaries());
-				horizon.updatePositions(posCalc.getBoundaries());
+				transitioner.updatePhraseBoundaries(newBoundaries);
+				navhandler.updateNavPositions(newBoundaries);
+				horizon.updatePositions(newBoundaries);
+				factMgr.updatePositions(newBoundaries);
+				factMgr.toggleFacts();
+
 				horizon.resizeAll(topmargin);
 			});
 
@@ -71,6 +90,7 @@ function(dependencyLoader,
 			resizer.bind();
 			navhandler.bind();
 			horizon.bind();
+			factMgr.bind();
 
 			$body.mousewheel(_.throttle(function(e, delta){
 				var targetPos,
@@ -88,6 +108,7 @@ function(dependencyLoader,
 			},100));
 
 			resizer.trigger();
+
 		});
 	});
 });
