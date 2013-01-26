@@ -236,6 +236,9 @@ ul {
 	position: absolute;
 	bottom: 0;
 }
+.ie-lt9 .facticon {
+	border: 0;
+}
 .phase-facts {
 	-webkit-transition: all 0.25s ease-in-out;
 	-moz-transition: all 0.25s ease-in-out;
@@ -250,6 +253,13 @@ ul {
 .show {
 	opacity: 1;
 	margin-top: 0;
+}
+.ie-lt9 .hide {
+	margin-top: 0;
+	display: none;
+}
+.ie-lt9 .show {
+	display: block;
 }
 .facts {
 	display: none;

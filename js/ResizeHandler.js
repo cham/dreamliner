@@ -4,6 +4,12 @@
 define(function(){
 	'use strict';
 
+	function shittyDims(DOMelement) {
+	    var img = new Image();
+	    img.src = DOMelement.src;
+	    return {width: img.width, height: img.height};
+	}
+
 	function ResizeHandler(opts){//baseDims,$headerlogo, $backgrounds, $phraseWrappers, $phraseScaleables){
 		this.baseDims = opts.baseDims;
 		this.$headerlogo = opts.$headerlogo;
@@ -19,8 +25,10 @@ define(function(){
 		// scaledbackground always matches window height
 		this.$backgrounds.each(function(){
 			var $this = $(this),
-				thisRatio = toHeight / this.naturalHeight,
-				toWidth = Math.floor(this.naturalWidth*thisRatio),
+				naturalHeight = this.naturalHeight || shittyDims(this).height,
+				naturalWidth = this.naturalWidth || shittyDims(this).width,
+				thisRatio = toHeight / naturalHeight,
+				toWidth = Math.floor(naturalWidth*thisRatio),
 				totalWidth = toWidth,
 				$clone;
 
