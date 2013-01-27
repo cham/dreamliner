@@ -439,3 +439,26 @@ ul {
 	margin-top: 8px;
 	margin-left: 9px;
 }
+/* social */
+.social {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	width: 70px;
+}
+@media screen and (max-width: 500px), (max-height: 400px){
+	.social {
+		left: -5px;
+	}
+	.stButton .stBubble {
+		height: 24px !important;
+		margin-top: 0 !important;
+		margin-bottom: 0px !important;
+	}
+	.stButton .stBubble_count {
+		padding-top: 4px !important;
+	}
+	.stButton .stFb, .stButton .stTwbutton, .stButton .stMainServices {
+		margin-bottom: 2px !important;
+	}
+}
