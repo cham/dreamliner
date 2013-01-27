@@ -476,6 +476,9 @@ ul {
 		bottom: 20px;
 	}
 }
+.pinterest-postcards {
+	display: none;
+}
 /* content */
 .phase-content {
 	position: absolute;

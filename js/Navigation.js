@@ -24,10 +24,11 @@ define(function(){
 
 	Navigation.prototype.updateIndex = function(){
 		var scrollLeft = this.$track.scrollLeft(),
-			lastLeft = 0;
+			lastLeft = 0,
+			hitArea = 100;
 
 		this.$navlinks.each(function(i){
-			if(parseInt($(this).data('navpos'),10)<(scrollLeft+100)){
+			if(parseInt($(this).data('navpos'),10)<(scrollLeft+hitArea)){
 				lastLeft = i;
 			}
 		});
@@ -35,7 +36,7 @@ define(function(){
 		this.currentIndex = lastLeft;
 
 		this.$navlinks.filter('.active').removeClass('active');
-		$(this.$navlinks.get(this.currentIndex)).addClass('active');
+		this.$navlinks.filter(':eq('+this.currentIndex+')').addClass('active');
 	};
 
 	Navigation.prototype.bind = function(){

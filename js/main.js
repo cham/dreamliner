@@ -91,6 +91,8 @@ function(dependencyLoader,
 		navhandler.bind();
 		horizon.bind();
 		factMgr.bind();
+		
+		navhandler.updateIndex();
 
 		$body.mousewheel(_.throttle(function(e, delta){
 			var targetPos,
