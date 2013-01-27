@@ -80,6 +80,8 @@ function(dependencyLoader,
 			horizon.updatePositions(newBoundaries);
 			factMgr.updatePositions(newBoundaries);
 			factMgr.toggleFacts();
+			factMgr.centerAllPopups();
+			factMgr.positionAllFacts();
 
 			horizon.resizeAll(topmargin);
 		});
@@ -105,9 +107,7 @@ function(dependencyLoader,
 			}
 		},100));
 
-		factMgr.centerAllPopups();
 		resizer.trigger();
-		factMgr.positionAllFacts();
 
 	}
 
