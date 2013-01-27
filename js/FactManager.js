@@ -64,7 +64,30 @@ define(function(){
 		this.$popups.hide();
 		this.$currentFact.add(this.$popupframe).show();
 
+		this.$popups.removeClass('shown');
+		this.$currentFact.addClass('shown');
+
 		this.centerPopup();
+	};
+
+	FactManager.prototype.centerAllPopups = function(){
+		var self = this,
+			lastCurrent = this.$currentFact;
+
+		this.$popups.each(function(){
+			self.popupFact($(this).attr('id'));
+		});
+
+		this.closePopup();
+		this.$currentFact = lastCurrent;
+	};
+
+	FactManager.prototype.positionAllFacts = function(){
+		var self = this;
+
+		_(this.boundaries).each(function(b,i){
+			self.showFacts(i);
+		});
 	};
 
 	FactManager.prototype.centerPopup = function(){
@@ -91,7 +114,12 @@ define(function(){
 	};
 
 	FactManager.prototype.hideFacts = function(index){
-		this.$facts.filter(':eq('+index+')').removeClass('show').addClass('hide');
+		var filter = _.isNumber(index);
+		if(filter){
+			this.$facts.filter(':eq('+index+')').removeClass('show').addClass('hide');
+		}else{
+			this.$facts.removeClass('show').addClass('hide');
+		}
 	};
 
 	FactManager.prototype.bind = function(){

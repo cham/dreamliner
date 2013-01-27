@@ -105,7 +105,9 @@ function(dependencyLoader,
 			}
 		},100));
 
+		factMgr.centerAllPopups();
 		resizer.trigger();
+		factMgr.positionAllFacts();
 
 	}
 

@@ -15,6 +15,13 @@ ul {
 	position: absolute;
 }
 
+@font-face {
+  font-family: 'TUITypeLight';
+  font-style: normal;
+  font-weight: 400;
+  src: local('TUITypeLight'), local('TUITypeLight'), url(fonts/webfont.tuitypelt.woff) format('woff');
+}
+
 /* header */
 .headerlogo-wrapper {
 	margin: 0 auto 0 auto;
@@ -54,7 +61,7 @@ ul {
 /* timeline */
 .timeline {
 	position: absolute;
-	bottom: 40px;
+	bottom: 30px;
 	width: 100%;
 	height: 56px;
 }
@@ -206,23 +213,23 @@ ul {
 	opacity: 0.8;
 }
 .shortline {
-	height: 100px;
+	height: 50px;
 }
 @media screen and (max-height: 650px){
 	.factline { height: 130px; }
-	.shortline { height: 80px; }
+	.shortline { height: 40px; }
 }
 @media screen and (max-height: 550px){
 	.factline { height: 100px; }
-	.shortline { height: 60px; }
+	.shortline { height: 30px; }
 }
 @media screen and (max-height: 450px){
 	.factline { height: 70px; }
-	.shortline { height: 50px; }
+	.shortline { height: 20px; }
 }
 @media screen and (max-height: 350px){
 	.factline { height: 50px; }
-	.shortline { height: 50px; }
+	.shortline { height: 0px; }
 }
 .facticon {
 	display: block;
@@ -235,6 +242,9 @@ ul {
 	cursor: pointer;
 	position: absolute;
 	bottom: 0;
+}
+.shortline .facticon {
+	bottom: -50px;
 }
 .ie-lt9 .facticon {
 	border: 0;
@@ -276,9 +286,10 @@ ul {
 	opacity: 0.3;
 	z-index: 10;
 }
-.popup-fact {/*
-	display: none;*/
-	font-size: 13px;
+.popup-fact {
+	font-size: 16px;
+	line-height: 18px;
+	font-family: 'TUITypeLight';
 }
 .imagefact, .bubblefact {
 	position: absolute;
@@ -461,4 +472,105 @@ ul {
 	.stButton .stFb, .stButton .stTwbutton, .stButton .stMainServices {
 		margin-bottom: 2px !important;
 	}
+	.timeline {
+		bottom: 20px;
+	}
+}
+/* content */
+.phase-content {
+	position: absolute;
+	top: -2000px;
+}
+/* css3 progressive enhancements */
+.css3 .facticon {
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+.css3 .factline:hover .facticon {
+	background: #fff;
+	bottom: 10px;
+}
+.css3 .shortline:hover .facticon {
+	bottom: -40px;
+}
+.css3 .bubblefact {
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-ms-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+	background: #000;
+	border-radius: 150px;
+}
+.css3 .fact-close {
+	background: #000;
+	border-radius: 26px;
+	background: #000 url(../img/ui/fact/close.png) 10px 8px no-repeat;
+}
+.css3 .bubblefact.shown , .css3 .bubblefact.shown .fact-close {
+	-webkit-animation-duration: 0.3s;
+	-webkit-animation-name: bounce;
+	-webkit-animation-timing-function: ease-in-out;
+	-moz-animation-duration: 0.3s;
+	-moz-animation-name: bounce;
+	-moz-animation-timing-function: ease-in-out;
+	-ms-animation-duration: 0.3s;
+	-ms-animation-name: bounce;
+	-ms-animation-timing-function: ease-in-out;
+	-o-animation-duration: 0.3s;
+	-o-animation-name: bounce;
+	-o-animation-timing-function: ease-in-out;
+	animation-duration: 0.3s;
+	animation-name: bounce;
+	animation-timing-function: ease-in-out;
+}
+.css3 .bubblefact.shown .fact-close {
+	-webkit-animation-delay: 0.3s;
+	-webkit-transform: scale(0.01);
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-delay: 0.3s;
+	-moz-transform: scale(0.01);
+	-moz-animation-fill-mode: forwards;
+	-ms-animation-delay: 0.3s;
+	-ms-transform: scale(0.01);
+	-ms-animation-fill-mode: forwards;
+	-o-animation-delay: 0.3s;
+	-o-transform: scale(0.01);
+	-o-animation-fill-mode: forwards;
+	animation-delay: 0.3s;
+	transform: scale(0.01);
+	animation-fill-mode: forwards;
+}
+@-webkit-keyframes bounce {
+	from { -webkit-transform: scale(0.1);}
+	82% { -webkit-transform: scale(0.9);}
+	66% { -webkit-transform: scale(1.1);}
+	to { -webkit-transform: scale(1);}
+}
+@-moz-keyframes bounce {
+	from { -moz-transform: scale(0.1);}
+	82% { -moz-transform: scale(0.9);}
+	66% { -moz-transform: scale(1.1);}
+	to { -moz-transform: scale(1);}
+}
+@-ms-keyframes bounce {
+	from { -ms-transform: scale(0.1);}
+	82% { -ms-transform: scale(0.9);}
+	66% { -ms-transform: scale(1.1);}
+	to { -ms-transform: scale(1);}
+}
+@-o-keyframes bounce {
+	from { -o-transform: scale(0.1);}
+	82% { -o-transform: scale(0.9);}
+	66% { -o-transform: scale(1.1);}
+	to { -o-transform: scale(1);}
+}
+@keyframes bounce {
+	from { transform: scale(0.1);}
+	82% { transform: scale(0.9);}
+	66% { transform: scale(1.1);}
+	to { transform: scale(1);}
 }
