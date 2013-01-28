@@ -500,7 +500,7 @@ ul {
 .css3 .shortline:hover .facticon {
 	bottom: -40px;
 }
-.css3 .bubblefact {
+.css3 .popup-fact {
 	-webkit-transition: all 0.25s ease-in-out;
 	-moz-transition: all 0.25s ease-in-out;
 	-ms-transition: all 0.25s ease-in-out;
@@ -514,7 +514,7 @@ ul {
 	border-radius: 26px;
 	background: #000 url(../img/ui/fact/close.png) 10px 8px no-repeat;
 }
-.css3 .bubblefact.shown , .css3 .bubblefact.shown .fact-close {
+.css3 .popup-fact.shown , .css3 .popup-fact.shown .fact-close {
 	-webkit-animation-duration: 0.3s;
 	-webkit-animation-name: bounce;
 	-webkit-animation-timing-function: ease-in-out;
@@ -531,7 +531,7 @@ ul {
 	animation-name: bounce;
 	animation-timing-function: ease-in-out;
 }
-.css3 .bubblefact.shown .fact-close {
+.css3 .popup-fact.shown .fact-close {
 	-webkit-animation-delay: 0.3s;
 	-webkit-transform: scale(0.01);
 	-webkit-animation-fill-mode: forwards;
