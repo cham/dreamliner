@@ -4,7 +4,8 @@ require(['lib/dependencyLoader',
 		'Navigation',
 		'PositionCalculator',
 		'HorizonController',
-		'FactManager'],
+		'FactManager',
+		'MouseWheel'],
 
 function(dependencyLoader,
 		ResizeHandler,
@@ -12,7 +13,8 @@ function(dependencyLoader,
 		Navigation,
 		PositionCalculator,
 		HorizonController,
-		FactManager){
+		FactManager,
+		MouseWheel){
 	'use strict';
 
 	function infographic(){
@@ -63,6 +65,11 @@ function(dependencyLoader,
 				$popupframe: $('.facts'),
 				$closers: $('.fact-close,.factbg'),
 				$window: $window
+			}),
+			mouseWheel = new MouseWheel({
+				$body: $body,
+				$track: posCalc.getEl(),
+				scrollbarWidth: scrollbarWidth
 			});
 
 		resizer.onResize(function(scale,topmargin){
@@ -91,26 +98,10 @@ function(dependencyLoader,
 		navhandler.bind();
 		horizon.bind();
 		factMgr.bind();
-		
+		mouseWheel.bind();
 		navhandler.updateIndex();
-
-		$body.mousewheel(_.throttle(function(e, delta){
-			var targetPos,
-				$el = posCalc.getEl(),
-				currentPos = $el.scrollLeft(),
-				scrollDist = 300,
-				scrollSpeed = 100;
-
-			delta = 0 - delta; // invert delta
-			targetPos = Math.min(Math.max(currentPos + (scrollDist*delta), 0), scrollbarWidth);
-
-			if(targetPos!==currentPos){
-				$el.scrollTo(targetPos,scrollSpeed);
-			}
-		},100));
-
+		
 		resizer.trigger();
-
 	}
 
 	// require dependencies and run
