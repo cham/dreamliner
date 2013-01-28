@@ -5,7 +5,8 @@ require(['lib/dependencyLoader',
 		'PositionCalculator',
 		'HorizonController',
 		'FactManager',
-		'MouseWheel'],
+		'MouseWheel',
+		'KeyboardNav'],
 
 function(dependencyLoader,
 		ResizeHandler,
@@ -14,7 +15,8 @@ function(dependencyLoader,
 		PositionCalculator,
 		HorizonController,
 		FactManager,
-		MouseWheel){
+		MouseWheel,
+		KeyboardNav){
 	'use strict';
 
 	function infographic(){
@@ -70,6 +72,9 @@ function(dependencyLoader,
 				$body: $body,
 				$track: posCalc.getEl(),
 				scrollbarWidth: scrollbarWidth
+			}),
+			kbNav = new KeyboardNav({
+				$document: $document
 			});
 
 		resizer.onResize(function(scale,topmargin){
@@ -93,12 +98,22 @@ function(dependencyLoader,
 			horizon.resizeAll(topmargin);
 		});
 
+		kbNav.onMove(function(direction){
+			if(direction){
+				navhandler.moveLeft();
+			}else{
+				navhandler.moveRight();
+			}
+		});
+
 		transitioner.bind();
 		resizer.bind();
 		navhandler.bind();
 		horizon.bind();
 		factMgr.bind();
 		mouseWheel.bind();
+		kbNav.bind();
+
 		navhandler.updateIndex();
 		
 		resizer.trigger();

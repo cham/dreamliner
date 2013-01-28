@@ -22,6 +22,20 @@ define(function(){
 		});
 	};
 
+	Navigation.prototype.moveLeft = function(){
+		if(this.currentIndex<1){
+			return;
+		}
+		this.$navlinks.filter(':eq('+(this.currentIndex-1)+')').trigger('click');
+	};
+
+	Navigation.prototype.moveRight = function(){
+		if(this.currentIndex>=this.$navlinks.length){
+			return;
+		}
+		this.$navlinks.filter(':eq('+(this.currentIndex+1)+')').trigger('click');
+	};
+
 	Navigation.prototype.updateIndex = function(){
 		var scrollLeft = this.$track.scrollLeft(),
 			lastLeft = 0,

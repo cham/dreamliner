@@ -32,6 +32,7 @@ ul {
 	position: absolute;
 	z-index: 5;
 	top: 40px;
+	cursor: pointer;
 }
 
 /* scroll track */
