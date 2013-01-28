@@ -34,6 +34,40 @@
 	70% { opacity: 1; }
 	to { -webkit-transform: scale(1); opacity: 0; }
 }
+@-moz-keyframes pulse {
+	from { -moz-transform: scale(0.1); }
+	60% { opacity: 0; }
+	70% { opacity: 1; }
+	to { -moz-transform: scale(1); opacity: 0; }
+}
+@-ms-keyframes pulse {
+	from { -ms-transform: scale(0.1); }
+	60% { opacity: 0; }
+	70% { opacity: 1; }
+	to { -ms-transform: scale(1); opacity: 0; }
+}
+@-o-keyframes pulse {
+	from { -o-transform: scale(0.1); }
+	60% { opacity: 0; }
+	70% { opacity: 1; }
+	to { -o-transform: scale(1); opacity: 0; }
+}
+@keyframes pulse {
+	from { transform: scale(0.1); }
+	60% { opacity: 0; }
+	70% { opacity: 1; }
+	to { transform: scale(1); opacity: 0; }
+}
+@-webkit-keyframes fadein { from { opacity: 0; } 14% { opacity: 1; } 28% { opacity: 0; } to { opacity: 0; }}
+@-moz-keyframes fadein { from { opacity: 0; } 14% { opacity: 1; } 28% { opacity: 0; } to { opacity: 0; }}
+@-ms-keyframes fadein { from { opacity: 0; } 14% { opacity: 1; } 28% { opacity: 0; } to { opacity: 0; }}
+@-o-keyframes fadein { from { opacity: 0; } 14% { opacity: 1; } 28% { opacity: 0; } to { opacity: 0; }}
+@keyframes fadein { from { opacity: 0; } 14% { opacity: 1; } 28% { opacity: 0; } to { opacity: 0; }}
+@-webkit-keyframes fastfade { from { opacity: 0; } 25% { opacity: 1;} 50% { opacity: 0; } to { opacity: 0; }}
+@-moz-keyframes fastfade { from { opacity: 0; } 25% { opacity: 1;} 50% { opacity: 0; } to { opacity: 0; }}
+@-ms-keyframes fastfade { from { opacity: 0; } 25% { opacity: 1;} 50% { opacity: 0; } to { opacity: 0; }}
+@-o-keyframes fastfade { from { opacity: 0; } 25% { opacity: 1;} 50% { opacity: 0; } to { opacity: 0; }}
+@keyframes fastfade { from { opacity: 0; } 25% { opacity: 1;} 50% { opacity: 0; } to { opacity: 0; }}
 body {
 	overflow: hidden;
 	background: #002d41;
@@ -350,13 +384,15 @@ ul {
 	top: 19px;
 }
 .imagefact {
-	width: 170px;
-	height: 200px;
+	width: 156px;
+	height: 189px;
 	padding: 100px 110px 90px 590px;
+	border-radius: 210px;
+	border: 4px solid white;
 }
 .imagefact .fact-close {
-	right: 58px;
-	top: 64px;
+	right: 39px;
+	top: 58px;
 }
 .vertical-middle {
 	display: table-cell;
@@ -364,18 +400,40 @@ ul {
 }
 .popup-fact .vertical-middle {
 	height: 200px;
+	position: absolute;
+	width: 180px;
 }
 .imagefact .vertical-middle {
 	height: 180px;
 }
 #fact-dreamliner1 {
-	background: url(../img/ui/fact/images/dreamliner1.png) top left no-repeat;
+	background: url(../img/ui/imagepopup/1.png) top left no-repeat;
+}
+#fact-dreamliner1.imagefact .fact-close {
+	right: 50px;
 }
 #fact-dreamliner2 {
-	background: url(../img/ui/fact/images/dreamliner2.png) top left no-repeat;
+	background: url(../img/ui/imagepopup/2.png) top left no-repeat;
 }
 #fact-dreamliner3 {
-	background: url(../img/ui/fact/images/dreamliner3.png) top left no-repeat;
+	background: url(../img/ui/imagepopup/3.png) top left no-repeat;
+}
+#fact-dreamliner4 {
+	background: url(../img/ui/imagepopup/6.png) top left no-repeat;
+}
+#fact-dreamliner5 {
+	background: url(../img/ui/imagepopup/12.png) top left no-repeat;
+}
+#fact-dreamliner6 {
+	background: #000;
+/*	background: url(../img/ui/imagepopup/13.png) top left no-repeat;*/
+}
+.youtube-frame {
+	position: absolute;
+	top: 36px;
+	left: 100px;
+	width: 660px;
+	height: 305px;
 }
 @media screen and (max-width: 900px), (max-height: 500px){
 	.imagefact {
@@ -542,8 +600,10 @@ ul {
 	-ms-transition: all 0.25s ease-in-out;
 	-o-transition: all 0.25s ease-in-out;
 	transition: all 0.25s ease-in-out;
-	background: #000;
+}
+.css3 .bubblefact {
 	border-radius: 150px;
+	background: #000;
 }
 .css3 .fact-close {
 	background: #000;
@@ -646,4 +706,82 @@ ul {
 }
 .css3 .facticon {
 	background: none;
+}
+/* slideshows */
+.slideshow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	outline: 1px solid red;
+}
+.slideshow-slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.css3 .cssfadein {
+	opacity: 0;
+	-webkit-animation-name: fastfade;
+	-webkit-animation-duration: 8s;
+	-webkit-animation-delay: 2s;
+	-webkit-animation-fill-mode: forwards;
+	-webkit-animation-iteration-count: infinite;
+
+	-moz-animation-name: fastfade;
+	-moz-animation-duration: 8s;
+	-moz-animation-delay: 2s;
+	-moz-animation-fill-mode: forwards;
+	-moz-animation-iteration-count: infinite;
+
+	-o-animation-name: fastfade;
+	-o-animation-duration: 8s;
+	-o-animation-delay: 2s;
+	-o-animation-fill-mode: forwards;
+	-o-animation-iteration-count: infinite;
+
+	animation-name: fastfade;
+	animation-duration: 8s;
+	animation-delay: 2s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+}
+.css3 .slide2 {
+	-webkit-animation-delay: 4s;
+	-moz-animation-delay: 4s;
+	-o-animation-delay: 4s;
+	animation-delay: 4s;
+}
+.css3 .cssfadein.longslides {
+	-webkit-animation-name: fadein;
+	-webkit-animation-duration: 14s;
+	-moz-animation-name: fadein;
+	-moz-animation-duration: 14s;
+	-o-animation-name: fadein;
+	-o-animation-duration: 14s;
+	animation-name: fadein;
+	animation-duration: 14s;
+}
+.css3 .longslides .slide2 {
+	-webkit-animation-delay: 4s;
+	-moz-animation-delay: 4s;
+	-o-animation-delay: 4s;
+	animation-delay: 4s;
+}
+.css3 .longslides .slide3 {
+	-webkit-animation-delay: 6s;
+	-moz-animation-delay: 6s;
+	-o-animation-delay: 6s;
+	animation-delay: 6s;
+}
+.css3 .longslides .slide4 {
+	-webkit-animation-delay: 8s;
+	-moz-animation-delay: 8s;
+	-o-animation-delay: 8s;
+	animation-delay: 8s;
+}
+.css3 .longslides .slide5 {
+	-webkit-animation-delay: 10s;
+	-moz-animation-delay: 10s;
+	-o-animation-delay: 10s;
+	animation-delay: 10s;
 }
