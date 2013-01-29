@@ -604,6 +604,9 @@ ul {
 .pinterest-postcards {
 	height:0px;
 }
+.css3 .pinterest-postcards {
+	display: none;
+}
 /* content */
 .phase-content {
 	position: absolute;
