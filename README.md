@@ -1,4 +1,4 @@
-Boilerplate
+Dreamliner infographic
 ===========
 
-A standard boilerplate for web apps
+An infographic, for the Dreamliner
