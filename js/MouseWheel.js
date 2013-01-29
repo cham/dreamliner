@@ -30,7 +30,7 @@ define(function(){
 			if(targetPos!==currentPos){
 				$track.scrollTo(targetPos,scrollSpeed);
 			}
-		},100));
+		},200));
 	};
 
 	return MouseWheel;
