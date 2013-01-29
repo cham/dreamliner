@@ -311,6 +311,12 @@ ul {
 	border-radius: 24px;
 	cursor: pointer;
 }
+.bg-green .facticon {
+	background: url(../img/ui/fact/tui_pulse-green.gif) top center no-repeat;
+}
+.bg-red .facticon {
+	background: url(../img/ui/fact/tui_pulse-red.gif) top center no-repeat;
+}
 .alignbottom {
 	position: absolute;
 	bottom: 0;
@@ -363,6 +369,16 @@ ul {
 	line-height: 18px;
 	font-family: 'TUITypeLight';
 }
+.popup-fact small {
+	font-size: 10px;
+	display: block;
+	line-height: 14px;
+	position: absolute;
+	bottom: -80px;
+	white-space: nowrap;
+	left: -408px;
+	opacity: 0.4
+}
 .imagefact, .bubblefact {
 	position: absolute;
 	z-index: 20;
@@ -390,6 +406,9 @@ ul {
 	border-radius: 210px;
 	border: 4px solid white;
 }
+.ie-9 .imagefact .fact-close {
+		background: url(../img/ui/fact/bubble1.png) -231px -18px no-repeat
+}
 .imagefact .fact-close {
 	right: 39px;
 	top: 58px;
@@ -400,8 +419,8 @@ ul {
 }
 .popup-fact .vertical-middle {
 	height: 200px;
-	position: absolute;
 	width: 180px;
+	position: absolute;
 }
 .imagefact .vertical-middle {
 	height: 180px;
@@ -440,6 +459,7 @@ ul {
 		height: 200px;
 		width: 170px;
 		padding: 50px 65px;
+		background: #000;
 	}
 	.imagefact .fact-close {
 		right: 13px;
@@ -448,6 +468,15 @@ ul {
 	#fact-dreamliner1.imagefact, #fact-dreamliner2.imagefact, #fact-dreamliner3.imagefact {
 		background: url(../img/ui/fact/bubble1.png) top center no-repeat;
 	}
+	#fact-dreamliner1,
+	#fact-dreamliner2,
+	#fact-dreamliner3,
+	#fact-dreamliner4,
+	#fact-dreamliner5,
+	#fact-dreamliner6 {
+		background: black;
+	}
+	.slideshow { display: none; }
 }
 /* fact icon overlays */
 .factmask {
@@ -573,7 +602,7 @@ ul {
 	}
 }
 .pinterest-postcards {
-	display: none;
+	height:0px;
 }
 /* content */
 .phase-content {
@@ -712,7 +741,6 @@ ul {
 	position: absolute;
 	top: 0;
 	left: 0;
-	outline: 1px solid red;
 }
 .slideshow-slide {
 	position: absolute;
@@ -784,4 +812,15 @@ ul {
 	-moz-animation-delay: 10s;
 	-o-animation-delay: 10s;
 	animation-delay: 10s;
+}
+.log {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 500px;
+	height: 500px;
+	background: white;
+	border: 1px solid red;
+	color: black;
+	overflow: scroll;
 }

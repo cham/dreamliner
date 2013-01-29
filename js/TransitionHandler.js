@@ -136,15 +136,18 @@ define(function(){
 			var $this = $(this),
 				lastLeft = self.lastLeft || 0,
 				scrollLeft = parseInt($this.scrollLeft(),10),
-				direction = scrollLeft > lastLeft,
-				perc;
+				direction = scrollLeft > lastLeft;
+
+
+			scrollLeft = Math.min(Math.max(scrollLeft,0),self.scrollBoundaries[self.scrollBoundaries.length-1].end);
 
 			_(self.scrollBoundaries).each(function(boundary){
 				if(scrollLeft>boundary.start && scrollLeft<boundary.rest){
 
 					// play boundary in
-					perc = (scrollLeft - boundary.rest)/(boundary.start - boundary.rest);
+					var perc = (scrollLeft - boundary.rest)/(boundary.start - boundary.rest);
 					self.setBoundaryIn(boundary,perc);
+
 					if(perc>0.975 && !direction){
 						self.hideBoundary(boundary);
 					}else if(perc>0.5 && direction){
@@ -154,7 +157,7 @@ define(function(){
 				}else if(scrollLeft>boundary.rest && scrollLeft<boundary.end){
 
 					// play boundary out
-					perc = (scrollLeft - boundary.rest)/(boundary.end - boundary.rest);
+					var perc = (scrollLeft - boundary.rest)/(boundary.end - boundary.rest);
 					self.setBoundaryOut(boundary,perc);
 
 					if(perc>0.975 && direction){
