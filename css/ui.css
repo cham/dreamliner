@@ -231,6 +231,14 @@ ul {
 .phase7 {
 	background: #002d41;
 }
+.phase7-mesh {
+	position: absolute;
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+	background:url(../img/ui/bg/phase7mesh.png);
+}
 .phase-wrapper {
 	margin: 0 auto;
 	width: 940px;
@@ -448,9 +456,32 @@ ul {
 #fact-dreamliner5 {
 	background: url(../img/ui/imagepopup/12.png) top left no-repeat;
 }
-#fact-dreamliner6 {
+#fact-dreamliner6 ,
+#fact-dreamliner7 {
 	background: #000;
-/*	background: url(../img/ui/imagepopup/13.png) top left no-repeat;*/
+}
+.two-col {
+	position: absolute;
+	width: 300px;
+	top: 50px;
+	font-size: 16px;
+}
+.two-col.first-col {
+	left: 120px;
+}
+.two-col.last-col {
+	right: 120px;
+}
+.find-out-more {
+	display: block;
+	background: url(../img/ui/fact/findoutmore.png) top left no-repeat;
+	text-indent: -100%;
+	width: 170px;
+	height: 40px;
+	position: absolute;
+	top: 314px;
+	left: 338px;
+	overflow: hidden;
 }
 .youtube-frame {
 	position: absolute;
@@ -579,6 +610,14 @@ ul {
 .mask-plane2 {
 	margin-top: 8px;
 	margin-left: 9px;
+}
+.mask-plane-dreamliner {
+	margin-left: 9px;
+	margin-top: 13px;
+}
+.mask-i-lightblue {
+	margin-left: 19px;
+	margin-top: 14px;
 }
 /* social */
 .social {
