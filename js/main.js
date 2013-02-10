@@ -117,6 +117,14 @@ function(dependencyLoader,
 		navhandler.updateIndex();
 		
 		resizer.trigger();
+
+		// logo fake click
+		$('.thomsonlogo').click(function(e){
+			e.preventDefault();
+			e.stopPropagation();
+
+			window.open('http://holidaysjustgotbetter.thomson.co.uk/flights/');
+		});
 	}
 
 	// require dependencies and run

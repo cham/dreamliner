@@ -656,6 +656,10 @@ ul {
 	position: absolute;
 	top: -2000px;
 }
+.thomsonlogo {
+	z-index: 100;
+	cursor: pointer;
+}
 /* css3 progressive enhancements */
 .css3 .facticon {
 	-webkit-transition: all 0.2s ease-in-out;
