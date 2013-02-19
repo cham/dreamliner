@@ -111,6 +111,7 @@ define(function(){
 	FactManager.prototype.closePopup = function(){
 		this.$popupframe.hide();
 		this.$currentFact = undefined;
+		$('.youtube-frame').get(0).contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
 	};
 
 	FactManager.prototype.hideFacts = function(index){
